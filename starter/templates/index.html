@@ -2,18 +2,34 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sudoku Game</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
-  <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
-    <button id="view-leaderboard">View Leaderboard</button>
-    <span id="timer">00:00</span>
-    <span id="message"></span>
+  <div class="page-shell">
+    <div class="top-bar">
+      <h1>Sudoku Game</h1>
+      <button id="theme-toggle" type="button" aria-pressed="false">Dark Mode</button>
+    </div>
+    <div id="sudoku-board"></div>
+    <div class="controls">
+      <label class="difficulty-picker" for="difficulty-select">
+        <span>Difficulty</span>
+        <select id="difficulty-select">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </label>
+      <button id="new-game">New Game</button>
+      <button id="check-solution">Check Solution</button>
+      <button id="use-hint">Hint</button>
+      <button id="view-leaderboard">View Leaderboard</button>
+      <span id="timer">00:00</span>
+      <span id="hint-count">Hints: 0</span>
+      <span id="message"></span>
+    </div>
   </div>
   <div id="leaderboard-container" class="leaderboard-hidden" aria-hidden="true">
     <div class="leaderboard-panel" role="dialog" aria-modal="true" aria-labelledby="leaderboard-title">
@@ -23,10 +39,23 @@
       </div>
       <table id="leaderboard-table" class="leaderboard-table">
         <thead>
-          <tr><th>Rank</th><th>Name</th><th>Time</th><th>Date</th></tr>
+          <tr><th>Rank</th><th>Name</th><th>Time</th><th>Difficulty</th><th>Hints Used</th></tr>
         </thead>
         <tbody></tbody>
       </table>
+    </div>
+  </div>
+  <div id="score-entry-container" class="leaderboard-hidden" aria-hidden="true">
+    <div class="leaderboard-panel score-entry-panel" role="dialog" aria-modal="true" aria-labelledby="score-entry-title">
+      <div class="leaderboard-header">
+        <h2 id="score-entry-title">Save your score</h2>
+        <button id="close-score-entry" class="small">Close</button>
+      </div>
+      <form id="score-entry-form" class="score-entry-form">
+        <label for="player-name">Name</label>
+        <input id="player-name" name="playerName" type="text" maxlength="32" required>
+        <button type="submit">Save Score</button>
+      </form>
     </div>
   </div>
   <script src="/static/main.js"></script>
