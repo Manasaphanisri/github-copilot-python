@@ -34,6 +34,25 @@ h1 {
     transition: background 0.2s;
 }
 
+/* Alternate the 3x3 box backgrounds */
+.sudoku-row:nth-child(1) .sudoku-cell:nth-child(-n+3),
+.sudoku-row:nth-child(2) .sudoku-cell:nth-child(-n+3),
+.sudoku-row:nth-child(3) .sudoku-cell:nth-child(-n+3),
+.sudoku-row:nth-child(1) .sudoku-cell:nth-child(n+7),
+.sudoku-row:nth-child(2) .sudoku-cell:nth-child(n+7),
+.sudoku-row:nth-child(3) .sudoku-cell:nth-child(n+7),
+.sudoku-row:nth-child(4) .sudoku-cell:nth-child(4):nth-child(-n+6),
+.sudoku-row:nth-child(5) .sudoku-cell:nth-child(4):nth-child(-n+6),
+.sudoku-row:nth-child(6) .sudoku-cell:nth-child(4):nth-child(-n+6),
+.sudoku-row:nth-child(7) .sudoku-cell:nth-child(-n+3),
+.sudoku-row:nth-child(8) .sudoku-cell:nth-child(-n+3),
+.sudoku-row:nth-child(9) .sudoku-cell:nth-child(-n+3),
+.sudoku-row:nth-child(7) .sudoku-cell:nth-child(n+7),
+.sudoku-row:nth-child(8) .sudoku-cell:nth-child(n+7),
+.sudoku-row:nth-child(9) .sudoku-cell:nth-child(n+7) {
+    background: #f0f0f0;
+}
+
 .sudoku-cell:focus {
     background: #e0f7fa;
 }
@@ -83,3 +102,42 @@ button:hover {
     font-size: 16px;
     color: #d32f2f;
 }
+
+/* Timer display */
+#timer {
+        display: inline-block;
+        margin-left: 10px;
+        font-weight: bold;
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 4px 8px;
+        border-radius: 4px;
+}
+
+/* Leaderboard modal */
+.leaderboard-hidden { display: none; }
+#leaderboard-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.leaderboard-panel {
+    background: #fff;
+    padding: 16px;
+    border-radius: 6px;
+    width: 360px;
+    max-width: 95%;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    text-align: left;
+}
+.leaderboard-header { display:flex; justify-content:space-between; align-items:center; }
+.leaderboard-table { width:100%; border-collapse:collapse; margin-top:8px; }
+.leaderboard-table th, .leaderboard-table td { padding:6px 8px; border-bottom:1px solid #eee; font-size:14px; }
+.small { padding:6px 10px; font-size:12px; background:#e0e0e0; color:#000; border-radius:4px; border:none; cursor:pointer; }
